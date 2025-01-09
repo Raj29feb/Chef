@@ -1,0 +1,11 @@
+<h1>Demo of ngIf</h1>
+
+<div *ngIf="showDetails">
+    <p>These details will be shown if showDetails is true else not</p>
+</div>
+
+<h1>Demo of ngFor</h1>
+
+<div *ngFor="let item of items; let i=index">
+    <p>{{i+1}} {{item}}</p>
+</div>

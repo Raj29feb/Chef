@@ -1,0 +1,38 @@
+<nav class="navbar">
+  @if(toggleNav){
+  <ul class="navLinks">
+    <li class="navLink"><a routerLink="/home">Home</a></li>
+    <li class="navLink"><a routerLink="/testing2">testing2</a></li>
+    <li class="navLink"><a routerLink="/signal">signal</a></li>
+    <li class="navLink"><a routerLink="/binding">binding</a></li>
+    <li class="navLink"><a routerLink="/injection">injection</a></li>
+    <li class="navLink"><a routerLink="/input-output">Input Output</a></li>
+    <li class="navLink"><a routerLink="/ngIf-ngFor">ngIf-ngFor</a></li>
+    <li class="navLink"><a routerLink="/defer">defer</a></li>
+    <li class="navLink"><a routerLink="/images">images</a></li>
+    <li class="navLink"><a routerLink="/template-form">template-form</a></li>
+    <li class="navLink"><a routerLink="/reactive-form">reactive-form</a></li>
+    <li class="navLink">
+      <a routerLink="/reactive-form-practise">reactive-form-practise</a>
+    </li>
+    <li class="navLink"><a routerLink="/validation">Validation</a></li>
+    <li class="navLink"><a routerLink="/usingService">Using Service</a></li>
+    <li class="navLink">
+      <a routerLink="/constructor-based-di">constructor-based-di</a>
+    </li>
+    <li class="navLink"><a routerLink="/usingPipes">Using-pipes</a></li>
+    <li class="navLink"><a routerLink="/form-array">Form Array</a></li>
+  </ul>
+  } @if(toggleNav){
+  <i
+    (click)="handleToggleNav()"
+    class="text-2xl fa-solid fa-caret-up cursor-pointer animate-bounce"
+  ></i>
+  }@else{
+  <i
+    (click)="handleToggleNav()"
+    class="text-2xl fa-solid fa-caret-down cursor-pointer animate-bounce"
+  ></i>
+  }
+</nav>
+<router-outlet />

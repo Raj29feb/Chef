@@ -1,0 +1,10 @@
+<h1>Validating Reactive Form</h1>
+<form [formGroup]="profileForm" (ngSubmit)="handleSubmit($event)">
+    <label for="name">
+        Name:<input type="text" name="name" id="name" placeholder="Enter your name" formControlName="name"/>
+    </label>
+    <label for="email">
+        Email:<input type="email" placeholder="Enter your email" id="email" name="email" formControlName="email"/>
+    </label>
+    <input type="submit" value="submit" [disabled]="!profileForm.valid"/>
+</form>

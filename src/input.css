@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar{
+    @apply flex flex-col items-center;
+}
+.navLinks{
+  @apply flex gap-5 flex-wrap m-5;
+}
+.inputField{
+    /* @apply border border-gray-400 rounded-md appearance-none p-1; */
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    @apply border rounded-lg p-2;
+}
+.font-medium{
+    @apply inline-block mt-3 mb-3 text-[#344055];
+}
+.mainChefContent{
+    @apply flex flex-col justify-center items-center p-5 ml-2 mr-2 bg-[#888098];
+}
+.mainForm{
+  width: -moz-available;
+  width:-webkit-fill-available;
+    @apply flex flex-wrap justify-evenly;
+}
+.btn{
+    @apply bg-indigo-500 text-white p-3 rounded-md font-semibold hover:bg-indigo-400;
+}
+.navLink{
+    @apply underline hover:bg-[#CFB3CD] hover:text-white p-2 antialiased;
+}
+.whiteSheet{
+    width: -moz-available;
+    width: -webkit-fill-available;
+    @apply bg-white h-[95%] absolute z-[1];
+}

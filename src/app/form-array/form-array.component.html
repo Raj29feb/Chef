@@ -1,0 +1,149 @@
+<!--Done and perfect till now-->
+<div class="mainChefContent relative">
+  <div [ngClass]="!isFadedOut ? 'whiteSheet' : 'normal'"></div>
+  <!--this will act like a fade in white sheet indicating that you changed the page-->
+  <h1 class="text-3xl font-semibold text-white">
+    <i class="fa-solid fa-utensils"></i>
+    How many dishes can you make{{ " "
+    }}<i class="text-5xl fa-brands fa-bitbucket"></i
+    ><b class="text-center text-2xl">{{ dishes.length }}</b>
+  </h1>
+  <form (ngSubmit)="handleSubmit()" [formGroup]="chiefData">
+    <!--page 1 to enter personal details-->
+    <div *ngIf="page == 0">
+      <label for="firstName"
+        ><span class="font-medium">First Name</span><br />
+        <input
+          type="text"
+          name="firstName"
+          placeholder="eg.Jhon"
+          class="inputField"
+          id="firstName"
+          formControlName="firstName"
+        /> </label
+      ><br />
+      <label for="lastName"
+        ><span class="font-medium">Last Name</span><br />
+        <input
+          type="text"
+          placeholder="eg.Smith"
+          name="lastName"
+          class="inputField"
+          id="lastName"
+          formControlName="lastName"
+        /> </label
+      ><br />
+      <label for="rollNo"
+        ><span class="font-medium">Roll No</span><br />
+        <input
+          type="number"
+          name="rollNo"
+          class="inputField"
+          placeholder="eg.14"
+          id="rollNo"
+          formControlName="rollNo"
+        /> </label
+      ><br />
+    </div>
+    <!--end of page 1-->
+    <!--need to give form group name if using nested formGroups-->
+
+    <!--started adding dishes pages-->
+    <div formArrayName="dishes">
+      <label for="dish">
+        <!--making fields for entering data of dishes which will be an array-->
+        <ng-container *ngFor="let dish of dishes.controls; let i = index">
+          <!--there a group inside an array so you will need to use one waybinding with the index of the form array to get the fromgroup name -->
+          <div *ngIf="i + 1 == page" [formGroupName]="i">
+            <span class="font-medium">Dish Name</span><br />
+            <input
+              type="text"
+              name="dishName"
+              class="inputField"
+              placeholder="eg.Burger"
+              id="dishName"
+              class="inputField"
+              formControlName="dishName"
+            /><br />
+            <span class="font-medium">Ingredients</span><br />
+            <div formArrayName="ingredients">
+              <ng-container
+                *ngFor="let ing of ingredientsArr(i).controls; let ind = index"
+              >
+                <input
+                  type="text"
+                  name="ingredients"
+                  placeholder="eg.Potatoes"
+                  class="inputField"
+                  id="ingredients"
+                  formControlName="{{ ind }}"
+                /><br />
+                <button
+                  class="btn mb-3"
+                  type="button"
+                  (click)="handleRemoveIng(i, ind)"
+                >
+                  <i class="fa-solid fa-trash-can"></i> Ingredient</button
+                ><br /> </ng-container
+              ><br />
+            </div>
+            <br />
+            <button class="btn" type="button" (click)="handleAddIng(i)">
+              <i class="fa-solid fa-plus"></i> Ingredient
+            </button>
+            <br />
+            <span class="font-medium">Prepare</span><br />
+            <!-- <input
+              type="text"
+              name="prepare"
+              placeholder="eg.Boil the Potatoes and mash them."
+              class="inputField"
+              id="prepare"
+              formControlName="prep"
+            /> -->
+            <textarea
+              formControlName="prep"
+              class="inputField"
+              name="prepare"
+              id="prepare"
+              rows="5"
+              placeholder="Boil the Potatoes and mash them."
+            >
+Boil the Potatoes and mash them.</textarea
+            >
+            <br />
+            <button
+              class="mt-4 btn"
+              type="button"
+              (click)="handleRemoveDish(i)"
+            >
+              <i class="fa-solid fa-trash-can"></i> Dish
+            </button>
+          </div>
+          <!--End adding dishes pages--> </ng-container
+        ><br /> </label
+      ><br />
+    </div>
+    <br />
+    <button class="btn mx-2" type="button" (click)="addMoreDishes()">
+      <i class="fa-solid fa-plus"></i> Dishes
+    </button>
+    <input
+      class="btn mx-2"
+      type="submit"
+      [disabled]="!chiefData.valid"
+      value="submit"
+    /><br />
+    <div class="flex justify-between items-center">
+      <i
+        class="text-2xl cursor-pointer mt-4 mx-2 fa-solid fa-caret-left"
+        (click)="handlePageDecrease()"
+      ></i
+      ><span class="text-white mt-4 font-semibold">{{ page }}</span
+      ><i
+        class="text-2xl cursor-pointer mt-4 mx-2 fa-solid fa-caret-right"
+        (click)="handlePageIncrease()"
+      ></i>
+    </div>
+  </form>
+</div>

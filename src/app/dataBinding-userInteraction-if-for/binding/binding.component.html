@@ -1,0 +1,21 @@
+<h1>This part shows data binding of the image if the imageURL changes the image will also change</h1>
+<img [src]="imageUrl()" alt="trees" width="100" height="100"/>
+<button (click)="handleChangeImage()">change image</button>
+
+@if(val%2==0){
+    <p>The number is even.</p>
+}@else{
+    <p>The number is not even.</p>
+}
+
+@for(val of arr; track val.name){
+    <p>{{val.name}} {{val.rollno}}</p>
+}
+
+<p>Example of one way binding : {{onway}}</p>
+<p>The data flow unidirectonal ie change in class component change template but not vice versa</p>
+
+<p>Example of two way binding data</p>
+<p>change the value in input field changes the value in template and vice versa</p>
+<input type="text" [(ngModel)]="twoWay"/>
+<p>change twoway::{{twoWay}}</p>

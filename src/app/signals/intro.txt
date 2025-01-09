@@ -1,0 +1,2 @@
+Signals are a way of interacting with the component that when changes gets reflected in the component.html.
+while a normal varible may not possess the same behavior

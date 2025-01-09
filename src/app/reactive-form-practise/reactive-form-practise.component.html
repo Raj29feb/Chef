@@ -1,0 +1,13 @@
+<h1>Reactive form practise</h1>
+<form [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
+    <label for="firstName">
+        firstName : <input type="text" name="firstName" id="firstName" formControlName="firstName"/>
+    </label>
+    <label for="lastName">
+        lastName : <input type="text" name="lastName" id="lstName" formControlName="lastName"/>
+    </label>
+    <label for="rollNo">
+        rollNo : <input type="number" name="rollNo" id="rollNo" formControlName="rollNo"/>
+    </label>
+    <input type="submit" value="submit" [disabled]="!profileForm.valid"/>
+</form>

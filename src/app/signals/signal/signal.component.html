@@ -1,0 +1,9 @@
+<div>
+    <h1>This is my signal component</h1>
+    <p>normal value changind using set :: {{name()}}</p>
+    <p>value getting updated to lowercase:: {{name()}}</p>
+    <p>vlaue getting computed to uppercase automatically : {{uppercase()}}</p>
+    <input type="text" id="name" value="" name="name" placeholder="Enter your full name"/>
+    <button (click)="handleSet()">click me to set</button>
+    <button (click)="handleUpdate()">click me to update</button>
+</div>
